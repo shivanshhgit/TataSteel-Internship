@@ -1,0 +1,16 @@
+:root {
+  background-color: #c7dbfc;
+}
+h1{
+  text-align: center;
+  padding-top: 2%;
+}
+.box{
+  background-color: white;
+  margin-left: 2.5%;
+  margin-bottom: 2.7%;
+  width: 95%;
+  height: fit-content;
+  border-radius: 25px;
+  box-shadow: 3px 7px 10px rgba(0,0,0,0.8);
+}

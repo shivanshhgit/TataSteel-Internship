@@ -46,10 +46,11 @@ function Linechart({ values, title }: props) {
           axisLine={{ stroke: "red" }}
           label={{
             value: values.data[0] && Object.keys(values.data[0])[1],
-            position: "insideleft",
+            position: "top",
             fill: "black",
             angle: -90,
             fontWeight: "bold",
+            offset: -150,
           }}
         />
         <Legend verticalAlign="top" align="right" />

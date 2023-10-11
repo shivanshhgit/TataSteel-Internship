@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <Charts
-        location={"72_machine_wise.csv"}
+        location={"./72_machine_wise.csv"}
         title={"PLANT 72 Machine wise for each year"}
       ></Charts>
       <Charts

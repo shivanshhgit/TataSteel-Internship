@@ -13,7 +13,7 @@ function App() {
       ></Charts>
       <Charts
         location={"./72_predicted.csv"}
-        title={"Predicted OEE values for plant 72 for next 3 years"}
+        title={"Predicted OEE values for plant 72 for next 2 years"}
       ></Charts>
       <Charts
         location={"./76_machine_wise.csv"}
@@ -25,7 +25,7 @@ function App() {
       ></Charts>
       <Charts
         location={"./76_predicted.csv"}
-        title={"Predicted OEE values for plant 76 for next 3 years"}
+        title={"Predicted OEE values for plant 76 for next 2 years"}
       ></Charts>
       <Charts
         location={"./95_machine_wise.csv"}
@@ -37,7 +37,7 @@ function App() {
       ></Charts>
       <Charts
         location={"./95_predicted.csv"}
-        title={"Predicted OEE values for plant 95 for next 3 years"}
+        title={"Predicted OEE values for plant 95 for next 2 years"}
       ></Charts>
     </>
   );

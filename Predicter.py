@@ -1,27 +1,26 @@
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
 import warnings
-warnings.filterwarnings('ignore', category=UserWarning)
+from pmdarima import auto_arima
+from statsmodels.tsa.arima.model import ARIMA
+
+warnings.filterwarnings('ignore')
 
 location = input("Enter file location\n")
 n = int(input("Number of future predictions\n"))
 newlocation = input("Location for new file\n")
 
-data = pd.read_csv(location)
-X = data[[data.columns[0]]]
-y = data[[data.columns[1]]]
+data = pd.read_csv(location, index_col='Date', parse_dates=True, date_parser=lambda x: pd.to_datetime(x, format='%d-%m-%Y'))
 
-model = LinearRegression()
-model.fit(X, y)
-year = []
-new_value = []
+# stepwise_fit = auto_arima(data['Average of OEE VALUE'], trace=True, suppress_warnings=True)
+# best_order = stepwise_fit.get_params()['order']
 
-for i in range(1,n+1):
-    future_year = (X.iloc[-1].values[0])+i
-    predicted_value = np.round(model.predict([[future_year]])[0][0] , 2)
-    year.append(future_year)
-    new_value.append(predicted_value)
-    
-prediction_data = pd.DataFrame({data.columns[0]: year, data.columns[1]: new_value})
-prediction_data.to_csv(newlocation, index=False)
+model=ARIMA(data['Average of OEE VALUE'], order=(10,1,10))
+model=model.fit()
+
+start=len(data)
+end=start + n -1
+
+pred=np.round( model.predict(start=start,end=end).rename('Average of OEE VALUE') , 2 )
+pred.index.name = 'Date'
+pred.to_csv(newlocation)
